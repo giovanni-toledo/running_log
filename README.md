@@ -10,8 +10,8 @@ jul = Month("JULY", 31)
 ```
 Call *Month.add_multiple_miles(self, chunk)* which parses through a multiline string in format:
  
- {day}, {miles} \n
- {day}, {miles} \n
+ {day}, {miles} \\n
+ {day}, {miles} \\n
  ... 
  
 and adds the value of *miles* to the corresponding *Day* object stored in *Month.days*
