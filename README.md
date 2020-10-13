@@ -1,5 +1,6 @@
 # Running Log
 Script I wrote to keep track of how many miles I've run this year.
+Edit main.py to use.
 
 
 ## USAGE EXAMPLE: 
@@ -9,11 +10,13 @@ Create a Month object for july which has 31 days
 jul = Month("JULY", 31)
 ```
 Call *Month.add_multiple_miles(self, chunk)* which parses through a multiline string in format:
- 
- {day}, {miles} \\n
- {day}, {miles} \\n
+ ```
+ """
+ {day}, {miles}
+ {day}, {miles} 
  ... 
- 
+ """
+ ```
 and adds the value of *miles* to the corresponding *Day* object stored in *Month.days*
 ```python
 jul.add_multiple_miles("""
