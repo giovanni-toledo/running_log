@@ -1,3 +1,5 @@
+from matplotlib import pyplot as plt
+
 class Day:
     """Object to keep track of miles run on a given day"""
     def __init__(self, day_num, miles= 0):
