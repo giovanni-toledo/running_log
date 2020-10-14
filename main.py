@@ -110,8 +110,9 @@ jul.add_multiple_miles("""
 jul.add_miles(30, 2)
 # adding miles to a day by either function more than once adds to the previous value 
 
-# print the name of the month, the total miles run in that month and days and miles logged
-# days with no activity are skipped by default 
-# to show them set the show_skipped_days argument to True
-print(jul.to_string())
+# x and y axes 
+july_x, july_y = jul.to_axes()
 
+# make and display plot
+plt.plot(july_x, july_y)
+plt.show()
