@@ -27,7 +27,6 @@ class Month:
             m += day.miles
         return round(m, 2)
 
-
     def populate(self):
         """This function is called on creation and recursively populates Month.days list with Day objects."""
         #for every day in the month
@@ -68,7 +67,21 @@ class Month:
                 s += str(day)
         s += "\n"
         return s
-
+    
+    def to_axes(self):
+        """returns 2 lists to be used as data for x and y axes on a plot.
+        first one contains a progression corresponding to every day in the month,
+        the second contains the distance run each day."""
+        # create empty lists
+        x, y = [], []
+        # iter through Day objects
+        for day in self.days:
+            if day.miles > 0:
+                # add data to lists
+                x.append(day.day_num)
+                y.append(day.miles)
+        # return lists
+        return x, y
 
 # USAGE EXAMPLE: 
 
