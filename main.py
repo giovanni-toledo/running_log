@@ -82,6 +82,12 @@ class Month:
                 y.append(day.miles)
         # return lists
         return x, y
+    
+    def to_plot(self):
+        """Makes plot of month running activity"""
+        # assign data to x and y axes
+        x, y = self.to_axes()
+        plt.plot(x, y, label=self.month_name)
 
 # USAGE EXAMPLE: 
 
@@ -110,9 +116,7 @@ jul.add_multiple_miles("""
 jul.add_miles(30, 2)
 # adding miles to a day by either function more than once adds to the previous value 
 
-# x and y axes 
-july_x, july_y = jul.to_axes()
-
-# make and display plot
-plt.plot(july_x, july_y)
+# make plot
+jul.to_plot()
+# display the plot
 plt.show()
