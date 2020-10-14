@@ -1,3 +1,5 @@
+from matplotlib import pyplot as plt
+
 class Day:
     """Object to keep track of miles run on a given day"""
     def __init__(self, day_num, miles= 0):
@@ -24,7 +26,6 @@ class Month:
         for day in self.days:
             m += day.miles
         return round(m, 2)
-
 
     def populate(self):
         """This function is called on creation and recursively populates Month.days list with Day objects."""
@@ -66,6 +67,50 @@ class Month:
                 s += str(day)
         s += "\n"
         return s
+    
+    def to_axes(self):
+        """returns 2 lists to be used as data for x and y axes on a plot.
+        first one contains a progression corresponding to every day in the month,
+        the second contains the distance run each day."""
+        # create empty lists
+        x, y = [], []
+        # iter through Day objects
+        for day in self.days:
+            if day.miles > 0:
+                # add data to lists
+                x.append(day.day_num)
+                y.append(day.miles)
+        # return lists
+        return x, y
+    
+    def to_plot(self):
+        """Makes plot of month running activity"""
+        # assign data to x and y axes
+        x, y = self.to_axes()
+        plt.plot(x, y, label=self.month_name)
+        
+class Plot:
+    """months must be a list of Month objects"""
+
+    def __init__(self, months, y_label='distance', x_label='day of month'):
+        self.months = months
+        self.y_label = y_label
+        self.x_label = x_label
+        self.make()
+
+    def make(self):
+        """create the plot"""
+        # call Month.to_plot method of each Month object
+        for month in self.months:
+            month.to_plot()
+        # assign labels to axes
+        plt.ylabel(self.y_label)
+        plt.xlabel(self.x_label)
+        # add labels to plot
+        plt.legend()
+
+    def display(self):
+        plt.show()
 
 
 # USAGE EXAMPLE: 
@@ -95,8 +140,7 @@ jul.add_multiple_miles("""
 jul.add_miles(30, 2)
 # adding miles to a day by either function more than once adds to the previous value 
 
-# print the name of the month, the total miles run in that month and days and miles logged
-# days with no activity are skipped by default 
-# to show them set the show_skipped_days argument to True
-print(jul.to_string())
-
+# create plot object
+plot = Plot(jul)
+# display it
+plot.display()

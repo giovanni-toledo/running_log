@@ -1,7 +1,7 @@
 # Running Log
 Script I wrote to keep track of how many miles I've run this year.
 Edit main.py to use.
-
+dependencies: _**matplotlib**_
 
 ## USAGE EXAMPLE: 
 
@@ -38,9 +38,12 @@ jul.add_miles(30, 2)
 ```
 adding miles to a day by either function more than once **adds to the previous value**. 
 
-print the name of the month, the total miles run in that month and days and miles logged
-**days with no activity are skipped by default** 
-to show them set the *show_skipped_days* argument to *True*
+create plot object
+Plot class takes a Month or list of Month objects as argument and plots their data 
 ```python
-print(jul.to_string())
+plot = Plot([jul, aug, sep])
+```
+to display the plot:
+```python
+plot.display()
 ```
