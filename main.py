@@ -88,6 +88,30 @@ class Month:
         # assign data to x and y axes
         x, y = self.to_axes()
         plt.plot(x, y, label=self.month_name)
+        
+class Plot:
+    """months must be a list of Month objects"""
+
+    def __init__(self, months, y_label='distance', x_label='day of month'):
+        self.months = months
+        self.y_label = y_label
+        self.x_label = x_label
+        self.make()
+
+    def make(self):
+        """create the plot"""
+        # call Month.to_plot method of each Month object
+        for month in self.months:
+            month.to_plot()
+        # assign labels to axes
+        plt.ylabel(self.y_label)
+        plt.xlabel(self.x_label)
+        # add labels to plot
+        plt.legend()
+
+    def display(self):
+        plt.show()
+
 
 # USAGE EXAMPLE: 
 
@@ -116,7 +140,7 @@ jul.add_multiple_miles("""
 jul.add_miles(30, 2)
 # adding miles to a day by either function more than once adds to the previous value 
 
-# make plot
-jul.to_plot()
-# display the plot
-plt.show()
+# create plot object
+plot = Plot(jul)
+# display it
+plot.display()
