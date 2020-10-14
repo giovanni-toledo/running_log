@@ -38,17 +38,12 @@ jul.add_miles(30, 2)
 ```
 adding miles to a day by either function more than once **adds to the previous value**. 
 
-create plot
+create plot object
+Plot class takes a Month or list of Month objects as argument and plots their data 
 ```python
-jul.to_plot()
+plot = Plot([jul, aug, sep])
 ```
-this can be done with multiple months to view data on the same plot 
+to display the plot:
 ```python
-jul.to_plot()
-aug.to_plot()
-sep.to_plot()
-```
-display the plot
-```python
-plt.show()
+plot.display()
 ```
