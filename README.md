@@ -1,6 +1,6 @@
 # Running Log
-Script I wrote to keep track of how many miles I've run this year.
-Edit main.py to use.
+Script I wrote to keep track of how many miles I've run this year.   
+Edit main.py to use.   
 dependencies: _**matplotlib**_
 
 ## USAGE EXAMPLE: 
